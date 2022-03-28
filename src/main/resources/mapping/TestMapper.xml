@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hanhf.onlinetest.mapper.TestMapper">
+    <resultMap id="BaseResultMap" type="com.hanhf.onlinetest.bean.Test">
+        <result column="user_id" jdbcType="INTEGER" property="userId"/>
+        <result column="question_id" jdbcType="INTEGER" property="questionId"/>
+        <result column="answer" jdbcType="VARCHAR" property="answer"/>
+        <result column="score" jdbcType="INTEGER" property="score"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.hanhf.onlinetest.bean.Test">
+        insert into tbl_test(user_id, question_id, answer, score)
+        values (#{user_id}, #{question_id}, #{answer}, #{score})
+    </insert>
+
+    <select id="findListByUserId" parameterType="java.lang.Integer"
+            resultType="com.hanhf.onlinetest.bean.Test">
+        select user_id, question_id, answer, score from tbl_test
+        where 1 = 1
+        <if test="userId != null">
+            and user_id = #{userId}
+        </if>
+    </select>
+</mapper>

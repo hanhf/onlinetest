@@ -1,0 +1,8 @@
+mybatis:
+  mapper-locations: classpath:mapping/*Mapper.xml
+  type-aliases-package: com.hanhf.onlinetest.bean
+
+spring:
+  datasource:
+    url: jdbc:sqlite:D:/onlinetest.db
+    driver-class-name: org.sqlite.JDBC
